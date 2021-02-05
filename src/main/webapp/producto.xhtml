@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<h:outputStylesheet type="text/css" name="registrar.css" />
+
+</h:head>
+
+<body>
+
+	<div class="login-wrap">
+		<div class="login-html">
+			<label class="tab">Servidor Producto</label>
+			<h:form>
+
+				<h:panelGrid columns="3">
+
+
+
+					<h:outputLabel value="Nombre Producto" />
+					<h:inputText value="#{productoBean.producto.nombre}" />
+					<h:message for="txtNombre" />
+
+					<h:outputLabel value="Cantidad" />
+					<h:inputText value="#{productoBean.producto.cantidad}" />
+					<h:message for="txtCantidad" />
+
+					<h:outputLabel value="Precio" />
+					<h:inputText value="#{productoBean.producto.precio}" />
+					<h:message for="txtPrecio" />
+
+					<h:commandButton action="#{productoBean.guardarProducto()}"
+						value="Insertar" />
+					<h:dataTable value="#{productoBean.listaProducto()}" var="producto">
+						<h:column>
+
+							<f:facet name="header">Codigo</f:facet>
+								#{producto.codigo}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nombre Producto</f:facet>
+								#{producto.nombre}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Cantidad</f:facet>
+								#{producto.cantidad}
+							</h:column>
+						<h:column>
+							<f:facet name="header">Precio</f:facet>
+								#{producto.precio}
+						</h:column>
+						<h:column>
+							<h:commandButton action="#{carritoBean.optenetCodigoProducto(producto.codigo)}" value="Agregar al Carrito"/>
+						</h:column>
+
+
+						
+						
+					</h:dataTable>
+					
+
+
+				</h:panelGrid>
+
+			</h:form>
+
+
+		</div>
+	</div>
+
+</body>
+</html>
